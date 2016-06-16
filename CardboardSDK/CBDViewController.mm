@@ -16,9 +16,6 @@
 #include "MagnetSensor.h"
 #include "ScreenParams.h"
 #include "Viewport.h"
-
-#include "DebugUtils.h"
-
 #include "GLHelpers.h"
 
 
@@ -107,10 +104,10 @@
     BOOL _frameParamentersReady;
 }
 
-@property (nonatomic) NSRecursiveLock *glLock;
+@property (nonatomic, strong) NSRecursiveLock *glLock;
 
-@property (nonatomic) CBDEye *leftEyeWrapper;
-@property (nonatomic) CBDEye *rightEyeWrapper;
+@property (nonatomic, strong) CBDEye *leftEyeWrapper;
+@property (nonatomic, strong) CBDEye *rightEyeWrapper;
 
 @end
 
@@ -204,7 +201,7 @@
 {
     [super viewDidLoad];
     
-    self.preferredFramesPerSecond = 60;
+    self.preferredFramesPerSecond = 30.0f;
     self.view.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if (!self.view.context)
     {
@@ -218,6 +215,8 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self.view deleteDrawable];
     
     [self.stereoRendererDelegate shutdownRendererWithView:self.view];
 
