@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = "Cardboard iOS SDK"
 
   s.description      = <<-DESC
-                        Cardboard iOS SDK
+                        Cardboard iOS SDK clone from https://github.com/rsanchezsaez/CardboardSDK-iOS
                        DESC
 
   s.homepage         = "https://github.com/islate/CardboardSDK-iOS"
