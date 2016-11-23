@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CardboardiOSSDK"
-  s.version          = "0.7.2.1"
+  s.version          = "0.7.2.2"
   s.summary          = "Cardboard iOS SDK"
 
   s.description      = <<-DESC
